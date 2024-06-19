@@ -3,15 +3,22 @@
 
 ## How to start docker compose
 
-```bash
+    #เริ่มต้นการทำงานของบริการที่คุณกำหนดไว้ในไฟล์ docker-compose.yml ในโหมด foreground:
+    "docker-compose up"
 
-```
+    #ตรวจสอบสถานะและดูคอนเทนเนอร์ที่กำลังทำงาน(คำสั่งนี้จะแสดงสถานะของแต่ละบริการที่กำหนดใน docker-compose.yml รวมถึงพอร์ตและชื่อคอนเทนเนอร์ด้วย.)
+    "docker-compose ps"
+
 
 ## Error we found
-
+    
+    #เกิด error หลายตัวมากๆ โดยหลายตัวก็ไม่ได้ใช้
+    #มีข้อผิดพลาดในการตั้งค่าบางอย่างในไฟล์ docker-compose.yml
 
 ## How to solve the problems.
 
+    #เกิด error ตัวไหนเพื่อนสอนโดยการลบตัวนั้นออกไปเลย
+    #ทดสอบการกำหนดค่าด้วย docker-compose config หรือ docker-compose config --services
 
 ## Output
 
