@@ -24,6 +24,14 @@
 13. ในหน้า Featured Server Snaps ไม่ต้องเลือกอะไรเลย กด Done ได้เลย
 14. จากนั้นรอมัน run เสร็จรอให้ขึ้น reboot อย่างเดียวและเลือก reboot ได้เลย
 
+(SET IP)
+
+1. install nano
+2. เข้า nano  ใช้คำสั่ง sudo nano /etc/netplan/00-installer-config.yaml
+3. เข้าไป setup ip 
+4. จากนั้นไปพิมพ์ sudo netplan apply
+5. ssh เข้า ubuntu ในเครื่องเรา
+
 ## How to install Docker
 1. Set up the Docker apt repository.
     # Add Docker's official GPG key:
