@@ -14,15 +14,16 @@
     
     #เกิด error หลายตัวมากๆ โดยหลายตัวก็ไม่ได้ใช้
     #มีข้อผิดพลาดในการตั้งค่าบางอย่างในไฟล์ docker-compose.yml
+    #เกิด error ตอนจะเปิดหน้า sensor คือมันไม่สามารถ compose-up ได้
 
 ## How to solve the problems.
 
     #เกิด error ตัวไหนเพื่อนสอนโดยการลบตัวนั้นออกไปเลย
     #ทดสอบการกำหนดค่าด้วย docker-compose config หรือ docker-compose config --services
-
+    #
 ## Output
 
-- [ ] IoT Sensor - Dashboards - Grafana 
+- [/] IoT Sensor - Dashboards - Grafana  
 - [ ] UI for Apache Ka
 - [ ] Mongo Expr
 - [ ] Node Expor
