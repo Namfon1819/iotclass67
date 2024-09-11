@@ -1,6 +1,6 @@
 # IoT Docker compose
 >> ให้นำไฟล์ docker-compose.yaml มาอธิบายว่า แต่ละส่วนคืออะไร โดยใช้การ comment ในไฟล์ docker-compose.yaml
->> # กำหนด volumes สำหรับเก็บข้อมูลที่ต้องการให้คงอยู่แม้คอนเทนเนอร์จะหยุดทำงาน
+>>  กำหนด volumes สำหรับเก็บข้อมูลที่ต้องการให้คงอยู่แม้คอนเทนเนอร์จะหยุดทำงาน
 volumes:
     prometheus_data: {}  # เก็บข้อมูลของ Prometheus
     grafana_data: {}     # เก็บข้อมูลของ Grafana
@@ -13,8 +13,8 @@ volumes:
 
 services:
 
-  # ZooKeeper เป็นบริการที่ช่วยในการจัดการข้อมูลการตั้งค่า
-  # การตั้งชื่อ และการซิงโครไนซ์แบบกระจาย
+   ZooKeeper เป็นบริการที่ช่วยในการจัดการข้อมูลการตั้งค่า
+   การตั้งชื่อ และการซิงโครไนซ์แบบกระจาย
   zookeeper:
     image: confluentinc/cp-zookeeper  # ใช้ภาพ Docker ของ ZooKeeper
     container_name: zookeeper          # ตั้งชื่อคอนเทนเนอร์
@@ -33,7 +33,7 @@ services:
       ZOOKEEPER_AUTOPURGE_SNAP_RETAIN_COUNT: 10  # จำนวน snapshot ที่เก็บไว้
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: 3  # ระยะเวลาการลบ snapshot
 
-  # Kafka เป็นแพลตฟอร์มการสตรีมข้อมูลแบบกระจาย
+   Kafka เป็นแพลตฟอร์มการสตรีมข้อมูลแบบกระจาย
   kafka:
     image: confluentinc/cp-kafka  # ใช้ภาพ Docker ของ Kafka
     container_name: kafka          # ตั้งชื่อคอนเทนเนอร์
@@ -50,7 +50,7 @@ services:
     links:
       - zookeeper  # เชื่อมโยงกับบริการ ZooKeeper
 
-  # Kafka REST Proxy ให้ API REST สำหรับ Kafka
+   Kafka REST Proxy ให้ API REST สำหรับ Kafka
   kafka-rest-proxy:
     image: confluentinc/cp-kafka-rest:latest  # ใช้ภาพ Docker ของ Kafka REST Proxy
     container_name: kafka-rest-proxy           # ตั้งชื่อคอนเทนเนอร์
@@ -62,7 +62,7 @@ services:
     ports:
       - "9999:8082"                                   # เปิดพอร์ต 9999 สำหรับการเข้าถึง
 
-  # Kafka Connect เป็นเฟรมเวิร์คสำหรับเชื่อมต่อ Kafka กับระบบภายนอก
+   Kafka Connect เป็นเฟรมเวิร์คสำหรับเชื่อมต่อ Kafka กับระบบภายนอก
   kafka-connect:
     image: confluentinc/cp-kafka-connect:latest  # ใช้ภาพ Docker ของ Kafka Connect
     container_name: kafka-connect                  # ตั้งชื่อคอนเทนเนอร์
@@ -100,7 +100,7 @@ services:
       - zookeeper  # ขึ้นอยู่กับ ZooKeeper
       - kafka      # ขึ้นอยู่กับ Kafka
 
-  # MongoDB สำหรับเก็บข้อมูล
+   MongoDB สำหรับเก็บข้อมูล
   mongo:
     image: mongo:4.4.20                           # ใช้ภาพ Docker ของ MongoDB
     container_name: mongo                          # ตั้งชื่อคอนเทนเนอร์
@@ -112,7 +112,7 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}  # รหัสผ่านราก
       - MONGO_INITDB_DATABASE=${MONGO_DB}          # ชื่อฐานข้อมูลเริ่มต้น
 
-  # Grafana สำหรับการวิเคราะห์และแสดงผลข้อมูล
+   Grafana สำหรับการวิเคราะห์และแสดงผลข้อมูล
   grafana:
     image: grafana/grafana:latest-ubuntu         # ใช้ภาพ Docker ของ Grafana
     container_name: grafana                       # ตั้งชื่อคอนเทนเนอร์
@@ -130,7 +130,7 @@ services:
     ports:
       - '8085:3000'                                   # เปิดพอร์ต 8085 สำหรับการเข้าถึง Grafana
 
-  # Prometheus สำหรับการตรวจสอบและแจ้งเตือน
+   Prometheus สำหรับการตรวจสอบและแจ้งเตือน
   prometheus:
     image: prom/prometheus:latest                   # ใช้ภาพ Docker ของ Prometheus
     container_name: prometheus                      # ตั้งชื่อคอนเทนเนอร์
@@ -164,7 +164,7 @@ services:
     ports:
       - '9100:9100'                     # เปิดพอร์ต 9100 สำหรับการเข้าถึง Node Exporter
 
-  # Kafka exporter for Prometheus
+   Kafka exporter for Prometheus
   kafka-exporter:
     image: bitnami/kafka-exporter:latest  # ใช้ภาพ Docker ของ Kafka Exporter
     container_name: kafka-exporter         # ตั้งชื่อคอนเทนเนอร์
@@ -176,7 +176,7 @@ services:
       - '--log.level=debug'                # ระดับ log
     restart: unless-stopped                # ให้รีสตาร์ทอัตโนมัติเมื่อคอนเทนเนอร์หยุดทำงาน
 
-  # IoT Sensor 1
+   IoT Sensor 1
   iot_sensor_1:
     # image: ssanchez11/iot_sensor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Sensor 1
     build:
@@ -193,7 +193,7 @@ services:
       - sensor.mqtt.password=${IOT_SENSOR_1_PASSWORD} # รหัสผ่าน MQTT
       - MQTT_SERVER=${MQTT_SERVER}               # ส่งค่า MQTT_SERVER
 
-  # IoT Sensor 2
+   IoT Sensor 2
   iot_sensor_2:
     image: ssanchez11/iot_sensor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Sensor 2
     container_name: iot_sensor_2                  # ตั้งชื่อคอนเทนเนอร์
@@ -203,7 +203,7 @@ services:
       - sensor.name=${IOT_SENSOR_2_NAME}         # ชื่อเซ็นเซอร์
       - sensor.place.id=${IOT_SENSOR_2_PLACE_ID} # รหัสสถานที่
 
-  # IoT Sensor 3
+   IoT Sensor 3
   iot_sensor_3:
     image: ssanchez11/iot_sensor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Sensor 3
     container_name: iot_sensor_3                  # ตั้งชื่อคอนเทนเนอร์
@@ -213,7 +213,7 @@ services:
       - sensor.name=${IOT_SENSOR_3_NAME}         # ชื่อเซ็นเซอร์
       - sensor.place.id=${IOT_SENSOR_3_PLACE_ID} # รหัสสถานที่
 
-  # IoT Processor
+   IoT Processor
   iot-processor:
     image: ssanchez11/iot_processor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Processor
     container_name: iot-processor                     # ตั้งชื่อคอนเทนเนอร์
@@ -225,7 +225,7 @@ services:
         condition: service_started                     # รอจนกว่า Kafka Connect จะเริ่มทำงาน
         restart: true                                  # ให้รีสตาร์ทอัตโนมัติ
 
-  # Pushgateway สำหรับ Prometheus
+   Pushgateway สำหรับ Prometheus
   pushgateway:
     image: prom/pushgateway:v0.8.0                  # ใช้ภาพ Docker ของ Pushgateway
     container_name: pushgateway                      # ตั้งชื่อคอนเทนเนอร์
@@ -233,7 +233,7 @@ services:
     ports:
       - '9091:9091'                                  # เปิดพอร์ต 9091 สำหรับการเข้าถึง Pushgateway
 
-  # Kafka UI สำหรับการจัดการ Kafka
+   Kafka UI สำหรับการจัดการ Kafka
   kafka-ui:
     container_name: kafka-ui                        # ตั้งชื่อคอนเทนเนอร์
     image: provectuslabs/kafka-ui:latest           # ใช้ภาพ Docker ของ Kafka UI
