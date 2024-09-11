@@ -11,6 +11,7 @@
 - [ ] Eclipse Paho MQTT Client.
 - [ ] Kafka Connect.
 - [ ] Kafka Rest Proxy
+      https://github.com/Namfon1819/iotclass67/blob/main/assignment01/02-docker-compose-iot.md#kafka-rest-proxy
 - [ ] Spring Boot 2.3.3 / Apache Maven 3.6.3.
 - [ ] Spring Boot Starter Actuator.
 - [ ] Micrometer Registry Prometheus.
