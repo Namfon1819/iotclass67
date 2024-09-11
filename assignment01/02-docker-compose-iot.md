@@ -51,7 +51,7 @@ services:
       - zookeeper  # เชื่อมโยงกับบริการ ZooKeeper
 
    Kafka REST Proxy ให้ API REST สำหรับ Kafka
-  kafka-rest-proxy:
+  # kafka-rest-proxy:
     image: confluentinc/cp-kafka-rest:latest  # ใช้ภาพ Docker ของ Kafka REST Proxy
     container_name: kafka-rest-proxy           # ตั้งชื่อคอนเทนเนอร์
     environment:
@@ -63,7 +63,7 @@ services:
       - "9999:8082"                                   # เปิดพอร์ต 9999 สำหรับการเข้าถึง
 
    Kafka Connect เป็นเฟรมเวิร์คสำหรับเชื่อมต่อ Kafka กับระบบภายนอก
-  kafka-connect:
+  # kafka-connect:
     image: confluentinc/cp-kafka-connect:latest  # ใช้ภาพ Docker ของ Kafka Connect
     container_name: kafka-connect                  # ตั้งชื่อคอนเทนเนอร์
     environment:
@@ -101,7 +101,7 @@ services:
       - kafka      # ขึ้นอยู่กับ Kafka
 
    MongoDB สำหรับเก็บข้อมูล
-  mongo:
+  # mongo:
     image: mongo:4.4.20                           # ใช้ภาพ Docker ของ MongoDB
     container_name: mongo                          # ตั้งชื่อคอนเทนเนอร์
     env_file:
@@ -113,7 +113,7 @@ services:
       - MONGO_INITDB_DATABASE=${MONGO_DB}          # ชื่อฐานข้อมูลเริ่มต้น
 
    Grafana สำหรับการวิเคราะห์และแสดงผลข้อมูล
-  grafana:
+  # grafana:
     image: grafana/grafana:latest-ubuntu         # ใช้ภาพ Docker ของ Grafana
     container_name: grafana                       # ตั้งชื่อคอนเทนเนอร์
     user: '0'                                    # รันด้วยสิทธิ์ผู้ใช้ 0
@@ -131,7 +131,7 @@ services:
       - '8085:3000'                                   # เปิดพอร์ต 8085 สำหรับการเข้าถึง Grafana
 
    Prometheus สำหรับการตรวจสอบและแจ้งเตือน
-  prometheus:
+  # prometheus:
     image: prom/prometheus:latest                   # ใช้ภาพ Docker ของ Prometheus
     container_name: prometheus                      # ตั้งชื่อคอนเทนเนอร์
     volumes:
@@ -148,7 +148,7 @@ services:
     ports:
       - '8086:9090'                                 # เปิดพอร์ต 8086 สำหรับการเข้าถึง Prometheus
         # Exporter for machine metrics    
-  nodeexporter:
+  # nodeexporter:
     image: prom/node-exporter:v0.18.1  # ใช้ภาพ Docker ของ Node Exporter
     container_name: nodeexporter        # ตั้งชื่อคอนเทนเนอร์
     hostname: nodeexporter              # ตั้งชื่อโฮสต์
@@ -165,7 +165,7 @@ services:
       - '9100:9100'                     # เปิดพอร์ต 9100 สำหรับการเข้าถึง Node Exporter
 
    Kafka exporter for Prometheus
-  kafka-exporter:
+  # kafka-exporter:
     image: bitnami/kafka-exporter:latest  # ใช้ภาพ Docker ของ Kafka Exporter
     container_name: kafka-exporter         # ตั้งชื่อคอนเทนเนอร์
     hostname: kafka-exporter               # ตั้งชื่อโฮสต์
