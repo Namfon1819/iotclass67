@@ -1,16 +1,24 @@
 # Used technology
-1. Distributed Systems (ระบบกระจายตัว): Kafka ถูกออกแบบให้สามารถทำงานได้ในรูปแบบของระบบกระจายตัว ซึ่งหมายความว่าข้อมูลและการประมวลผลสามารถถูกแบ่งออกเป็นส่วน ๆ และกระจายไปยังเครื่องหลายเครื่องในเครือข่าย ทำให้มีความทนทานและสามารถรองรับโหลดงานขนาดใหญ่ได้
+>> สรุปว่าเราใช้ technology stack อะไรบ้างในโครงการนี้ ทำ link ไปยังแต่ละส่วน
 
-2. Message Log (บันทึกข้อความ): Kafka จัดเก็บข้อมูลในรูปแบบของ log ที่เป็นแบบ append-only ซึ่งทำให้การเขียนและการอ่านข้อมูลมีความเร็วสูง ข้อมูลจะถูกจัดเก็บเป็นลำดับต่อเนื่องในรูปแบบของข้อความ
 
-3. Producers และ Consumers: Kafka ใช้แนวคิดของ producer และ consumer โดย producer จะเป็นผู้ส่งข้อความไปยัง Kafka และ consumer จะเป็นผู้ดึงข้อความจาก Kafka ไปใช้
-
-4. Topics: ข้อมูลใน Kafka ถูกจัดเก็บเป็นกลุ่ม ๆ ที่เรียกว่า topics ซึ่งเป็นการจัดระเบียบข้อมูลตามหัวข้อที่กำหนด เพื่อให้ผู้บริโภคสามารถเลือกที่จะดึงข้อมูลเฉพาะหัวข้อที่สนใจได้
-
-5. Partitions: ข้อมูลในแต่ละ topic จะถูกแบ่งออกเป็น partitions ซึ่งช่วยในการกระจายโหลดและทำให้สามารถอ่านและเขียนข้อมูลได้พร้อมกันหลายเครื่อง
-
-6.Replication (การทำซ้ำข้อมูล): Kafka มีการทำซ้ำข้อมูลในแต่ละ partition เพื่อเพิ่มความทนทานและลดความเสี่ยงที่จะสูญเสียข้อมูลในกรณีที่เกิดปัญหากับเครื่องในระบบ
-
-7. Zookeeper: Kafka ใช้ Zookeeper เพื่อจัดการและควบคุมการทำงานใน cluster ซึ่งรวมถึงการจัดการ partitions, replication และการติดตามสถานะของ brokers (เครื่องในระบบ)
-
-8. Stream Processing: Kafka มาพร้อมกับ Kafka Streams API ซึ่งช่วยให้สามารถประมวลผลข้อมูลในแบบ real-time ได้โดยไม่ต้องใช้เครื่องมือหรือ framework ภายนอก
+- [ ] Ubuntu Server Installation
+- [ ] Docker Containerization
+- [ ] Kafka Streams.
+- [ ] Spring Kafka.
+- [ ] Eclipse Paho MQTT Client.
+- [ ] Kafka Connect.
+- [ ] Kafka Rest Proxy
+- [ ] Spring Boot 2.3.3 / Apache Maven 3.6.3.
+- [ ] Spring Boot Starter Actuator.
+- [ ] Micrometer Registry Prometheus.
+- [ ] lombok.
+- [ ] Jackson.
+- [ ] NodeExporter (Exporter for machine metrics).
+- [ ] Prometheus.
+- [ ] Grafana.
+- [ ] Eclipse Mosquitto.
+- [ ] MongoDB.
+- [ ] Mongo DB Express (Web-based MongoDB admin interface, written with Node.js and express).
+- [ ] Cadvisor (Analyzes resource usage and performance characteristics of running containers).
+- [ ] kafka-exporter (Kafka exporter for Prometheus).
