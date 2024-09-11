@@ -6,7 +6,7 @@ Internet of things Class 2567
 - [ ] Main technologies of architectures [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment00/architecture.md)
 - [ ] Setting up servers and components. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/tree/main/assignment01)
 - [ ] Compose services. https://gibhub.com
-- [ ] Ingest and store real-time data from IoT sensors. https://gibhub.com
+- [ ] Ingest and store real-time data from IoT sensors. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment03/01-ingest.md)
 - [ ] Analyze and make aggregations. https://gibhub.com
 - [ ] Store data. https://gibhub.com
 - [ ] Data Visualization.  https://gibhub.com
