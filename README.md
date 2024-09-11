@@ -9,7 +9,7 @@ Internet of things Class 2567
 - [ ] Ingest and store real-time data from IoT sensors. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment03/01-ingest.md)
 - [ ] Analyze and make aggregations. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment05/01-analyze.md)
 - [ ] Store data. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment06/01-storedata.md)
-- [ ] Data Visualization.  https://gibhub.com
+- [ ] Data Visualization.  [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment07/01-visualization.md)
 - [ ] Used technologies. https://gibhub.com
 
 
