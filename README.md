@@ -8,7 +8,7 @@ Internet of things Class 2567
 - [ ] Compose services. https://gibhub.com
 - [ ] Ingest and store real-time data from IoT sensors. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment03/01-ingest.md)
 - [ ] Analyze and make aggregations. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment05/01-analyze.md)
-- [ ] Store data. https://gibhub.com
+- [ ] Store data. [https://gibhub.com](https://github.com/Namfon1819/iotclass67/blob/main/assignment06/01-storedata.md)
 - [ ] Data Visualization.  https://gibhub.com
 - [ ] Used technologies. https://gibhub.com
 
