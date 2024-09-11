@@ -16,6 +16,7 @@
 - [ ] Micrometer Registry Prometheus.
 - [ ] lombok.
 - [ ] Jackson.
+      https://github.com/Namfon1819/iotclass67/blob/main/assignment04/01-iot-sensor.md#mqtt-payload
 - [ ] NodeExporter (Exporter for machine metrics).
 - [ ] Prometheus.
 - [ ] Grafana.
