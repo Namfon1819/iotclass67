@@ -5,6 +5,7 @@
 - [ ] Ubuntu Server Installation
       https://github.com/Namfon1819/iotclass67/blob/main/assignment01/01-install-server.md
 - [ ] Docker Containerization
+      https://github.com/Namfon1819/iotclass67/blob/main/assignment01/02-docker-compose-iot.md
 - [ ] Kafka Streams.
 - [ ] Spring Kafka.
 - [ ] Eclipse Paho MQTT Client.
