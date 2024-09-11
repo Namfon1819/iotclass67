@@ -2,7 +2,8 @@
 
 ## Architecture Overview
 
-![IoT Event Streaming Architecture](https://miro.medium.com/v2/resize:fit:2000/format:webp/1*IUaBLlbVKgmsjbjqzew0ZQ.png)
+![MQTT Ci](https://github.com/user-attachments/assets/881cdd96-946d-4bb2-8fa4-585baba87bc5)
+
 
 ## Eclipse Mosquitto
     Eclips Mosquitto เป็น MQTT broker ที่ทำหน้าที่เป็น "สถานีชุมทาง" 
