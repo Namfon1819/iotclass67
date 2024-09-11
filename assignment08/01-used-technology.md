@@ -3,7 +3,7 @@
 
 
 - [ ] Ubuntu Server Installation
-      https://github.com/Namfon1819/iotclass67/blob/main/assignment01/01-install-server.md
+      https://github.com/Namfon1819/iotclass67/blob/main/assignment01/01-install-server.md#how-to-install-server
 - [ ] Docker Containerization
       https://github.com/Namfon1819/iotclass67/blob/main/assignment01/01-install-server.md#how-to-install-docker
 - [ ] Kafka Streams.
