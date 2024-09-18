@@ -1,3 +1,4 @@
+```cpp
 # IoT Docker compose
 >> ให้นำไฟล์ docker-compose.yaml มาอธิบายว่า แต่ละส่วนคืออะไร โดยใช้การ comment ในไฟล์ docker-compose.yaml
 >>  กำหนด volumes สำหรับเก็บข้อมูลที่ต้องการให้คงอยู่แม้คอนเทนเนอร์จะหยุดทำงาน
@@ -245,6 +246,7 @@ services:
       DYNAMIC_CONFIG_ENABLED: 'true'                # เปิดใช้งานการตั้งค่าแบบไดนามิก
       KAFKA_CLUSTERS_0_NAME: wizard_test            # ชื่อคลัสเตอร์ Kafka
       KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: kafka:9092 # ที่อยู่ของ Kafka
+```
 
       
 
