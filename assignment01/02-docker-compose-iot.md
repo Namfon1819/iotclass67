@@ -260,15 +260,34 @@ services:
   ZooKeeper: ใช้ในการจัดการและทำการซิงโครไนซ์ Kafka brokers
   Kafka: เป็นแพลตฟอร์มการส่งข้อความที่ช่วยในการจัดการและสตรีมข้อมูลจาก IoT devices
 
+  service
+zookeeper
+kafka
+
 ## start-service #1
 ในหน้าจอที่สอง มีการเรียกใช้สคริปต์ start_1kafka_server.sh ซึ่งเป็นการเปิดใช้งาน Kafka Server เพื่อให้สามารถส่งและรับข้อมูลจาก clients ผ่าน topics ต่าง ๆ ที่ 
  กำหนดไว้ใน Kafka
 
+ service
+kafka-rest-proxy
+kafka-connect
+mosquitto
+mongo
+grafana
+prometheus
+
 ## start-service #2
 หน้าจอที่สาม ใช้สคริปต์ start_2iot_processor.sh เพื่อเปิดการทำงานของ IoT Processor ซึ่งอาจเป็นบริการที่ทำหน้าที่ประมวลผลข้อมูลที่ถูกส่งเข้ามาผ่าน Kafka และทำการวิเคราะห์หรือดำเนินการกับข้อมูล IoT ที่ได้รับมา
 
+service
+iot-processor
+
 ## start-service #3
 ในหน้าจอที่สี่ ใช้สคริปต์ start_3iot_sensor.sh เพื่อเปิดการทำงานของ IoT Sensor Processor ซึ่งอาจเป็นบริการที่รับข้อมูลจากเซนเซอร์ IoT และทำการประมวลผลเบื้องต้นก่อนที่จะส่งต่อไปยัง Kafka สำหรับการประมวลผลเพิ่มเติม
+
+service
+iot_sensor
+
 
 
 ![image](https://github.com/user-attachments/assets/1b3b68cc-68d3-48c0-be73-f4f76a7cedf0)
