@@ -2,7 +2,9 @@
 
 ## Architecture Overview
 
-![MQTT Ci](https://github.com/user-attachments/assets/881cdd96-946d-4bb2-8fa4-585baba87bc5)
+
+![image](https://github.com/user-attachments/assets/90fe05b8-1629-4ce5-9431-9de26fd52215)
+
 
 
 ## Eclipse Mosquitto
