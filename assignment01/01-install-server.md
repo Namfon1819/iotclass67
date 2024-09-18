@@ -31,7 +31,7 @@
 3. เข้าไป setup ip 
 4. จากนั้นไปพิมพ์ sudo netplan apply
 5. ssh เข้า ubuntu ในเครื่องเรา
-
+``` cpp
 ## How to install Docker
 1. Set up the Docker apt repository.
     # Add Docker's official GPG key:
@@ -66,4 +66,4 @@ sudo apt-get update
 
     #Run docker run hello-world command to test it:
     "docker run hello-world"
-
+```
