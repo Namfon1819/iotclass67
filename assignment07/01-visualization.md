@@ -9,6 +9,9 @@
    
 ![Screenshot 2024-08-28 164621](https://github.com/user-attachments/assets/fa580613-0962-434d-94dd-eb0da87dea05)
 
+![Screenshot 2024-08-28 164627](https://github.com/user-attachments/assets/bd2ac6aa-a64e-46e3-a1b3-649f8ca0a252)
+
+
 ----IoT Sensor Humidity:------
 
 แสดงค่าความชื้นสัมพัทธ์จากเซ็นเซอร์ IoT หลายตัว โดยใช้ Time-series graph (กราฟเส้นตามเวลา)
