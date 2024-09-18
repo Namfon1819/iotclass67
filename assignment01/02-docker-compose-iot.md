@@ -1,7 +1,8 @@
-```cpp
+
 # IoT Docker compose
 >> ให้นำไฟล์ docker-compose.yaml มาอธิบายว่า แต่ละส่วนคืออะไร โดยใช้การ comment ในไฟล์ docker-compose.yaml
 >>  กำหนด volumes สำหรับเก็บข้อมูลที่ต้องการให้คงอยู่แม้คอนเทนเนอร์จะหยุดทำงาน
+```cpp
 volumes:
     prometheus_data: {}  # เก็บข้อมูลของ Prometheus
     grafana_data: {}     # เก็บข้อมูลของ Grafana
