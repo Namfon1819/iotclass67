@@ -1,4 +1,19 @@
 # Data Visualization.
+#การลง Flowcharting
+
+![image](https://github.com/user-attachments/assets/1c9cefa8-5069-4b84-8ed0-1154c8f2dadc)
+
+1) เปิดหน้่า grafana ขึ้นมาและเข้า plugin ค้นหา floecharting และทำการเลื่อนลงไปข้างล่างเพื่อเข้าไปใน link นี้
+
+![image](https://github.com/user-attachments/assets/e14f68a7-7746-4c77-8cfd-785528d0adfc)
+
+2) พอเข้าไปใน link github จะเจอของที่ sky frank fork ไว้
+
+![image](https://github.com/user-attachments/assets/b0255545-e9ad-4de6-8ce5-8360981ab262)
+
+3) จากนั้นให้เราโหลดไฟล์ Zip ออกมา
+4) และ
+
 นำข้อมูลอะไรมาแสดงในส่วนของ Visualization บ้าง
 
 1. ข้อมูลในส่วนแผนผังบ้านหรือสวนต่างๆที่เราออกแบบและวาง sensor ไว้
