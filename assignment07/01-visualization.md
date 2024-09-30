@@ -31,7 +31,6 @@
       - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
       - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-worldmap-panel,grafana-piechart-panel
       - GF_USERS_ALLOW_SIGN_UP=false
-      ## i add this to anable flowcharting
       - GF_SECURITY_ANGULAR_SUPPORT_ENABLED=true
       - GF_FEATURE_TOGGLES_ANGULARDEPRECATIONUI=false
     restart: unless-stopped
