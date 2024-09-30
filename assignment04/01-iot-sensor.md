@@ -37,9 +37,7 @@ Payload (ข้อมูลที่ส่ง) ข้อมูล JSON ที่
 
 ## ESP32
 
-
-![1726642936153](https://github.com/user-attachments/assets/528d1a3d-f5ec-4af0-8cf8-a089bc478691)
-
+![Untitled Diagram ver2](https://github.com/user-attachments/assets/5dc1c557-3608-43d9-aa19-2a9aadfd586d)
 
 
 ```cpp
