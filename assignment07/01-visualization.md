@@ -18,6 +18,7 @@
 7) สร้าง container ของ iot ใหม่ทั้งหมดตั้งเเต่ต้น โดยการพิมพ์ตาม start … .sh เเต่ละตัวจนครบ (ตัว sensor ไม่ต้องก็ได้ เพราะว่าไม่เกี่ยวกัน มันเเค่การรับค่า iot มาจาก sensor)
 8) เอา agenty flowcharting ของ skyfrank มาลงใน plugin
 9) ไปเเก้ใข docker compose ใน หัวข้อของ grafana เป็นเเบบนี้
+    ```cpp
     grafana:
     image: grafana/grafana:latest-ubuntu
     container_name: grafana
@@ -38,7 +39,7 @@
        - prometheus
     ports:
       - '8085:3000'
-
+   ```
 10) พอลงเสร็จก็ docker compose restart
 
 
