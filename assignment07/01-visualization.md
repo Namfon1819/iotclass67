@@ -12,8 +12,37 @@
 ![image](https://github.com/user-attachments/assets/b0255545-e9ad-4de6-8ce5-8360981ab262)
 
 3) จากนั้นให้เราโหลดไฟล์ Zip ออกมา
-4) และ
+4) และเอาไฟล์ไปใส่ไว้ใน IOT ของเราที่เราตั้งชื่อไว้/grafana/data/plugnin/src
+5) แตกไฟล์ด้วยคำสั่ง unzip agenty-flowcharting-panel-1.0.0e.231214594-SNAPSHOT.zip
+6) จากนั้นลบ docker image volume container ทุกอย่าง
+7) สร้าง container ของ iot ใหม่ทั้งหมดตั้งเเต่ต้น โดยการพิมพ์ตาม start … .sh เเต่ละตัวจนครบ (ตัว sensor ไม่ต้องก็ได้ เพราะว่าไม่เกี่ยวกัน มันเเค่การรับค่า iot มาจาก sensor)
+8) เอา agenty flowcharting ของ skyfrank มาลงใน plugin
+9) ไปเเก้ใข docker compose ใน หัวข้อของ grafana เป็นเเบบนี้
+    grafana:
+    image: grafana/grafana:latest-ubuntu
+    container_name: grafana
+    user: '0'
+    volumes:
+      - ./grafana/data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - GF_SECURITY_ADMIN_USER=${ADMIN_USER:-admin}
+      - GF_SECURITY_ADMIN_PASSWORD=${ADMIN_PASSWORD:-admin}
+      - GF_INSTALL_PLUGINS=grafana-clock-panel,grafana-worldmap-panel,grafana-piechart-panel
+      - GF_USERS_ALLOW_SIGN_UP=false
+      ## i add this to anable flowcharting
+      - GF_SECURITY_ANGULAR_SUPPORT_ENABLED=true
+      - GF_FEATURE_TOGGLES_ANGULARDEPRECATIONUI=false
+    restart: unless-stopped
+    links:
+       - prometheus
+    ports:
+      - '8085:3000'
 
+10) พอลงเสร็จก็ docker compose restart
+
+    
 นำข้อมูลอะไรมาแสดงในส่วนของ Visualization บ้าง
 
 1. ข้อมูลในส่วนแผนผังบ้านหรือสวนต่างๆที่เราออกแบบและวาง sensor ไว้
