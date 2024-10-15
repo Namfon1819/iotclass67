@@ -144,6 +144,7 @@ Select: [ Reboot Now ]
 ``` cpp
 
 ## How to install Docker
+
 1. Set up the Docker apt repository.
     # Add Docker's official GPG key:
 sudo apt-get update
