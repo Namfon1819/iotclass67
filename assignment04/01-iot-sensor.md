@@ -37,7 +37,8 @@ Payload (ข้อมูลที่ส่ง) ข้อมูล JSON ที่
 
 ## ESP32
 
-![Untitled Diagram ver2](https://github.com/user-attachments/assets/5dc1c557-3608-43d9-aa19-2a9aadfd586d)
+
+![iot](https://github.com/user-attachments/assets/9bfe9b17-ff2b-49e5-b319-213eb42c6d9c)
 
 
 ```cpp
