@@ -219,4 +219,54 @@ public class AggregateMetricsByPlaceProcessor {
 สามารถดูพฤติกรรมที่เปลี่ยนแปลงไปตามเวลาหรือเหตุการณ์เฉพาะ และสามารถช่วยให้เกิดการวางแผนล่วงหน้า หรือทำให้สามารถคาดการณ์เหตุการณ์ในอนาคตได้
 
 โปรเซสเซอร์ Aggregate Metrics Time Series Processor มีจุดประสงค์ในการแปลงข้อมูลให้เหมาะสมกับการใช้งานใน Prometheus โดยใช้ชื่อเซ็นเซอร์, รหัสเซ็นเซอร์ และตัวระบุสถานที่เป็น มิติข้อมูล (dimensions) ในการจัดการข้อมูลเหล่านี้
-@Componen
+
+@Component
+public class MetricsTimeSeriesProcessor {
+
+    private static final Logger logger = LoggerFactory.getLogger(MetricsTimeSeriesProcessor.class);
+
+    private final static String SENSOR_TIME_SERIE_NAME = "sample_sensor_metric";
+    private final static String SENSOR_TIME_SERIE_TYPE = "sensor";
+
+    /**
+     * Metrics Time Series
+     */
+    @Value("${kafka.topic.metrics-time-series}")
+    private String metricTimeSeriesOutput;
+
+    /**
+     *
+     * @param stream
+     */
+    public void process(KStream<SensorKeyDTO, SensorDataDTO> stream) {
+        stream
+                .map((key, val) -> new KeyValue<>(val.getId(), buildSensorTimeSerieMetric(val)))
+                .to(metricTimeSeriesOutput, Produced.with(String(), new SensorTimeSerieMetricSerde()));
+    }
+
+    /**
+     * Build Sensor Time Serie Meter
+     *
+     * @param sensorData
+     * @return
+     */
+    private SensorTimeSerieMetricDTO buildSensorTimeSerieMetric(final SensorDataDTO sensorData) {
+        return SensorTimeSerieMetricDTO.builder()
+                .name(SENSOR_TIME_SERIE_NAME)
+                .timestamp(new Date().getTime())
+                .type(SENSOR_TIME_SERIE_TYPE)
+                .dimensions(SensorTimeSerieMetricDimensionsDTO.builder()
+                        .placeId(sensorData.getPlaceId())
+                        .sensorId(sensorData.getId())
+                        .sensorName(sensorData.getName())
+                        .build())
+                .values(SensorTimeSerieMetricValuesDTO.builder()
+                        .humidity((double) sensorData.getPayload().getHumidity())
+                        .luminosity((double) sensorData.getPayload().getLuminosity())
+                        .pressure((double) sensorData.getPayload().getPressure())
+                        .temperature((double) sensorData.getPayload().getTemperature())
+                        .build())
+                .build();
+    }
+
+}
