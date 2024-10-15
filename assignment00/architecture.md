@@ -3,7 +3,8 @@
 ## Architecture Overview
 
 
-![image](https://github.com/user-attachments/assets/90fe05b8-1629-4ce5-9431-9de26fd52215)
+![image](https://github.com/user-attachments/assets/3b546443-4850-4ca0-b948-5c136103d109)
+
 
 
 
