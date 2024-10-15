@@ -50,48 +50,41 @@ Select: [ Done ]
 ## 9. Storage Configuration
 Configure your partitions as follows:
 
-Mount Boot Partition:
+    ##1.Mount Boot Partition:
 
-Use free space to create a new GPT partition.
+    Use free space to create a new GPT partition.
 
-Size: 2G
+    Size: 2G
 
-Format: [ ext4 ]
+    Format: [ ext4 ]
 
-Mount: [ /boot ]
+    Mount: [ /boot ]
 
-Select: [ Create ]
+    Select: [ Create ]
 
-Mount Swap Partition:
+    ##2.Mount Swap Partition:
 
-Use free space to create a new GPT partition.
+    Use free space to create a new GPT partition.
 
-Size: 2G
+    Size: 2G
 
-Format: [ swap ]
+    Format: [ swap ]
 
-Select: [ Create ]
+    Select: [ Create ]
 
-Mount Root Partition:
+    ##3.Mount Root Partition:
 
-Use the remaining free space to create a new GPT partition.
+    Use the remaining free space to create a new GPT partition.
 
-Size: MAX
+    Size: MAX
 
-Format: [ ext4 ]
+    Format: [ ext4 ]
 
-Mount: [ / ]
+    Mount: [ / ]
 
-Select: [ Create ]
+    Select: [ Create ]
 
-File System Summary:
-MOUNT POINT	SIZE	TYPE	DEVICE TYPE
-
-/	MAX	ext4	partition of localdis
-
-/boot	2.0 G	ext4	partition of localdis
-
-/SWAP	2.0 G	swap	partition of localdis
+##File System Summary:
 
 Select: [ Done ]
 Confirm the destructive action.
