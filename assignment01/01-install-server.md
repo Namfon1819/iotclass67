@@ -94,22 +94,29 @@ Select: [ Continue ]
 Fill in the following fields to set up your server profile:
 
 Your name: Enter your full name.
+
 Your server name: Choose a name for your server.
+
 Pick a username: Choose a username for your account.
+
 Choose a password: Create a secure password.
+
 Confirm your password: Re-enter your password to confirm.
+
 Select: [ Done ]
 
 ## 11. Upgrad to Ubunto Pro
 If prompted, select the option for upgrading to Ubuntu Pro.
 
 Option: (X) Custom storage layout
+
 Select: [ Continue ]
 
 ## 12. SSH Configuration
 Install the OpenSSH server to enable remote access.
 
 Option: (X) Install OpenSSH server
+
 Select: [ Done ]
 
 ## 13. Featured server snaps
