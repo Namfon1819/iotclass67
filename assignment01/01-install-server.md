@@ -93,17 +93,17 @@ Select: [ Continue ]
 ## 10. Profile Configuration
 Fill in the following fields to set up your server profile:
 
-    ##Your name: Enter your full name.
+    *Your name : Enter your full name.
 
-    ##Your server name: Choose a name for your server.
+    *Your server name : Choose a name for your server.
 
-    ##Pick a username: Choose a username for your account.
+    *Pick a username : Choose a username for your account.
 
-    ##Choose a password: Create a secure password.
+    *Choose a password : Create a secure password.
 
-    ##Confirm your password: Re-enter your password to confirm.
+    *Confirm your password : Re-enter your password to confirm.
 
-Select: [ Done ]
+    *Select : [ Done ]
 
 ## 11. Upgrad to Ubunto Pro
 If prompted, select the option for upgrading to Ubuntu Pro.
