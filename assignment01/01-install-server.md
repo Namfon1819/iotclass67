@@ -125,7 +125,7 @@ Skip the installation of featured snaps.
 
 Select: [ Continue ]
 
-## 14. Installation Complete!
+## 14. Installation Complete
 
 Once the installation is finished, your server is ready to use.
 
@@ -141,10 +141,9 @@ Select: [ Reboot Now ]
 5. ssh เข้า ubuntu ในเครื่องเรา
 
 
-``` cpp
 
 ## How to install Docker
-
+``` cpp
 1. Set up the Docker apt repository.
     # Add Docker's official GPG key:
 sudo apt-get update
