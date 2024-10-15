@@ -10,6 +10,7 @@
 
 โปรเซสเซอร์ Aggregate Metrics By Sensor Processor ทำหน้าที่รวมข้อมูลจากเซ็นเซอร์โดยอิงตาม Sensor ID โดยใช้หน้าต่างเวลาแบบหมุน (sliding window) ขนาด 5 นาที เพื่อคำนวณค่าเฉลี่ยของพารามิเตอร์ต่างๆ เช่น อุณหภูมิ ความชื้น ความดันอากาศ และความส่องสว่าง ในกระบวนการนี้ โปรเซสเซอร์จะสร้าง schema model ที่เหมาะสม และจำเป็นต้องกำหนดค่า SerDe (Serializer/Deserializer) ที่ถูกต้องเพื่อแปลงข้อมูลในรูปแบบที่สามารถจัดเก็บและดึงข้อมูลจาก Kafka ได้อย่างมีประสิทธิภาพ
 
+```cpp
 @Component
 public class AggregateMetricsBySensorProcessor {
 
@@ -107,6 +108,8 @@ public class AggregateMetricsBySensorProcessor {
 
 }
 
+```
+
 # Aggregate Metrics By Place Processor
 หลักการ:
 การ Aggregation โดยสถานที่ หมายถึงการรวมข้อมูลจากเซ็นเซอร์ทั้งหมดที่อยู่ในสถานที่หรือพื้นที่เฉพาะ เช่น อาคาร, โรงงาน, หรือห้อง
@@ -116,7 +119,7 @@ public class AggregateMetricsBySensorProcessor {
 ช่วยในการทำความเข้าใจภาพรวมของสภาพแวดล้อมในพื้นที่นั้น ๆ โดยอิงจากข้อมูลของเซ็นเซอร์ทั้งหมดที่อยู่ในพื้นที่
 
 โปรเซสเซอร์ Aggregate Metrics By Place Processor ทำหน้าที่รวมข้อมูลในลักษณะเดียวกับ Aggregate Metrics By Sensor Processor แต่ในกรณีนี้ การคำนวณค่าเฉลี่ยจะอ้างอิงจาก สถานที่ (Place ID) แทนที่จะเป็นเซ็นเซอร์แต่ละตัว
-
+```cpp
 @Component
 public class AggregateMetricsByPlaceProcessor {
 
@@ -209,7 +212,7 @@ public class AggregateMetricsByPlaceProcessor {
     }
 
 }
-
+```
 # Aggregate Metrics Time Series
 หลักการ:
 การ Aggregation แบบ Time Series (อนุกรมเวลา) เป็นการรวมข้อมูลโดยอิงตามเวลา ซึ่งเป็นการสรุปข้อมูลในช่วงเวลาต่าง ๆ เช่น รายวัน รายสัปดาห์ หรือรายชั่วโมง
@@ -219,7 +222,7 @@ public class AggregateMetricsByPlaceProcessor {
 สามารถดูพฤติกรรมที่เปลี่ยนแปลงไปตามเวลาหรือเหตุการณ์เฉพาะ และสามารถช่วยให้เกิดการวางแผนล่วงหน้า หรือทำให้สามารถคาดการณ์เหตุการณ์ในอนาคตได้
 
 โปรเซสเซอร์ Aggregate Metrics Time Series Processor มีจุดประสงค์ในการแปลงข้อมูลให้เหมาะสมกับการใช้งานใน Prometheus โดยใช้ชื่อเซ็นเซอร์, รหัสเซ็นเซอร์ และตัวระบุสถานที่เป็น มิติข้อมูล (dimensions) ในการจัดการข้อมูลเหล่านี้
-
+```cpp
 @Component
 public class MetricsTimeSeriesProcessor {
 
@@ -270,3 +273,4 @@ public class MetricsTimeSeriesProcessor {
     }
 
 }
+```
