@@ -260,7 +260,8 @@ services:
   ZooKeeper: ใช้ในการจัดการและทำการซิงโครไนซ์ Kafka brokers
   Kafka: เป็นแพลตฟอร์มการส่งข้อความที่ช่วยในการจัดการและสตรีมข้อมูลจาก IoT devices
 
->>service
+service
+
 zookeeper
 
 kafka
