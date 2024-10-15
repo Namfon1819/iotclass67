@@ -262,6 +262,7 @@ services:
 
 >>service
 zookeeper
+
 kafka
 
 ## start-service #1
@@ -270,10 +271,15 @@ kafka
 
 >>service
 kafka-rest-proxy
+
 kafka-connect
+
 mosquitto
+
 mongo
+
 grafana
+
 prometheus
 
 ## start-service #2
