@@ -13,8 +13,7 @@ Kafka ไปยัง MongoDB
 1. MongoDB Sink Connector สำหรับ iot-frames
 ตัวเชื่อมต่อนี้จะย้ายข้อมูลจากหัวข้อ iot-frames ไปยังคอลเล็กชัน iot_frames ใน MongoDB โดยข้อมูลอยู่ในรูปแบบ JSON โดยไม่ต้องใช้ schema เช่น Avro หรือ JSON-Schema เพื่อให้กระบวนการง่ายขึ้น
 
-json
-Copy code
+```cpp
 {
    "name":"iot-frames-mongodb-sink",
    "config":{
@@ -30,11 +29,12 @@ Copy code
       "key.converter.schemas.enable":false
    }
 }
+```
+
 2. MongoDB Sink Connector สำหรับ iot-aggregate-metrics-sensor
 ตัวเชื่อมต่อนี้จะย้ายข้อมูลเมตริกที่รวมตามเซ็นเซอร์จากหัวข้อ iot-aggregate-metrics-sensor ไปยังคอลเล็กชัน iot_aggregate_metrics_sensor ใน MongoDB
 
-json
-Copy code
+```cpp
 {
    "name":"iot-aggregate-metrics-sensor-mongodb-sink",
    "config":{
@@ -50,11 +50,11 @@ Copy code
       "key.converter.schemas.enable": false
    }
 }
+```
 3. MongoDB Sink Connector สำหรับ iot-aggregate-metrics-place
 ตัวเชื่อมต่อนี้จะย้ายข้อมูลเมตริกที่รวมตามสถานที่จากหัวข้อ iot-aggregate-metrics-place ไปยังคอลเล็กชัน iot_aggregate_metrics_place ใน MongoDB
 
-json
-Copy code
+```cpp
 {
    "name":"iot-aggregate-metrics-place-mongodb-sink",
    "config":{
@@ -70,13 +70,13 @@ Copy code
       "key.converter.schemas.enable": false
    }
 }
+```
 Kafka ไปยัง Prometheus
 สำหรับการใช้งานร่วมกับ Prometheus ต้องกำหนดค่าตัวเชื่อมต่อเพื่อย้ายข้อมูลจากหัวข้อ iot-metric-time-series โดย Prometheus จะรับข้อมูลผ่านการดึงข้อมูล (scraping) ดังนั้นตัวเชื่อมต่อจะเปิดใช้งานเซิร์ฟเวอร์ HTTP เพื่อให้ Prometheus ค้นหาข้อมูล
 
 ตัวเชื่อมต่อ Kafka Connect Prometheus Metrics Sink ทำให้ข้อมูลนี้พร้อมสำหรับการขูดข้อมูลโดยเซิร์ฟเวอร์ Prometheus โดยตัวเชื่อมต่อรองรับข้อมูลในรูปแบบ JSON แบบไม่มีโครงร่างจาก Kafka
 
-json
-Copy code
+```cpp
 {
   "name" : "prometheus-connector-sink",
   "config" : {
@@ -96,3 +96,4 @@ Copy code
    "behavior.on.error": "log"
   }
 }
+```
