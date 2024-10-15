@@ -51,15 +51,39 @@
 4) Fault-tolerant และ Scalable
 
 ## Apache Kafka Streams
-•เป็นชุดเครื่องมือสำหรับการสร้างแอปพลิเคชันที่ทำงานกับข้อมูลที่เก็บไว้ใน Kafka 
+•Apache Kafka Streams เป็นไลบรารีสำหรับการพัฒนา stream processing applications ซึ่งช่วยให้คุณสามารถ ประมวลผลข้อมูลแบบเรียลไทม์ จาก Kafka topics ได้อย่างง่ายดายและมีประสิทธิภาพ แอปพลิเคชันที่สร้างด้วย Kafka Streams สามารถประมวลผลข้อมูล อย่างต่อเนื่อง และ เป็นสถานะ (stateful) ทำให้เหมาะกับงานที่ต้องมีการรวบรวมและวิเคราะห์ข้อมูลในทันที
 
-•ช่วยให้เขียนโปรแกรมและใช้งานแอปพลิเคชันได้ง่ายขึ้น 
+#หน้าที่ของ Apache Kafka Streams
+1) การประมวลผลข้อมูลแบบเรียลไทม์ (Real-time Stream Processing)
+2) การรวมและแปลงข้อมูล (Aggregation and Transformation)
+3) Stateful Processing (การประมวลผลแบบมีสถานะ)
+4) การจัดการหน้าต่างเวลา (Windowing)
+5) Distributed Processing (ประมวลผลแบบกระจาย)
 
 ## Prometheus
 • เป็นระบบ monitoring และ alerting แบบ open-source ที่ถูกออกแบบมาสำหรับการเก็บข้อมูลจากแอปพลิเคชันและระบบต่าง ๆ ในรูปของ time-series data (ข้อมูลตามเวลา) เพื่อวิเคราะห์และติดตามประสิทธิภาพของระบบได้อย่างมีประสิทธิภาพ
 
+#หน้าที่และความสามารถของ Prometheus
+1) Monitoring และเก็บข้อมูล Time-Series Data
+2) Pull Model สำหรับการดึงข้อมูล
+3) Query ข้อมูลด้วย PromQL
+4) Alerting
+5) Multi-dimensional Data Model
+6) Data Retention และการจัดเก็บ
+7) การทำ Visualization
+
 ## MongoDB
 • MongoDB เป็นระบบฐานข้อมูล NoSQL แบบ document-oriented ที่เก็บข้อมูลในรูปแบบ JSON-like documents มีความยืดหยุ่นสูง เหมาะสำหรับการจัดเก็บข้อมูลที่มีโครงสร้างไม่แน่นอนหรือเปลี่ยนแปลงบ่อย เช่น แอปพลิเคชันที่เติบโตเร็วหรือมีข้อมูลขนาดใหญ่
+
+#คุณสมบัติของ MongoDB
+1) Document-Oriented Storage
+2) Schema-less Database (Flexible Schema)
+3) Scalability (รองรับการขยายตัว)
+4) Replication (การจำลองข้อมูล)
+5) Querying ที่ทรงพลัง
+6) Indexing เพื่อเพิ่มประสิทธิภาพ
+7) Aggregation Framework
+8) รองรับ Transaction
 
 ## Grafana
 • Grafana เป็นเครื่องมอื ที่ใช้แสดงผลข้อมูลเป็นกราฟและแดชบอร์ด 
