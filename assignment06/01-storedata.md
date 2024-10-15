@@ -1,26 +1,98 @@
 # Store data.
 
-1. ข้อมูลที่เก็บไว้ใน MongoDB
-MongoDB เหมาะกับการจัดเก็บข้อมูลที่มีโครงสร้างไม่ตายตัว (semi-structured data) และมีความยืดหยุ่นสูงสำหรับการวิเคราะห์ย้อนหลัง ข้อมูลที่เก็บไว้ใน MongoDB สามารถนำไปใช้สำหรับการวิเคราะห์ระยะยาวหรือการเรียกดูย้อนหลัง:
+Kafka ไปยัง MongoDB
+ภาพรวม
+กระบวนการนี้มีจุดประสงค์เพื่อย้ายข้อมูลที่ผ่านการประมวลผลแล้วจากหัวข้อ Kafka ไปยังคอลเลกชันที่เกี่ยวข้องใน MongoDB เพื่อใช้ในการวิเคราะห์และดูข้อมูลผ่านเครื่องมือ เช่น MongoDB-Express ได้ในอนาคต
 
-ข้อมูลดิบจากเซ็นเซอร์:
-ข้อมูลที่ได้รับจากเซ็นเซอร์ทั้งหมด เช่น อุณหภูมิ, ความชื้น, ความดัน, ความสว่าง, ฯลฯ
-รูปแบบ JSON ที่มีฟิลด์ต่าง ๆ เช่น sensor_id, place_id, timestamp, และ payload ที่มีรายละเอียดของเซ็นเซอร์แต่ละประเภท
-ข้อมูลเมตริกที่ผ่านการ Aggregation:
-ข้อมูลที่ได้รับการสรุปผลหรือวิเคราะห์เรียบร้อยแล้ว เช่น ค่าเฉลี่ย, ค่าต่ำสุด-สูงสุด, ค่าเบี่ยงเบนมาตรฐาน เป็นต้น (โดยอิงจากการวิเคราะห์ใน Aggregate Metrics By Sensor และ By Place)
-ข้อมูลนี้จะถูกใช้สำหรับการวิเคราะห์เชิงลึกภายในองค์กร หรือใช้สำหรับการสร้างรายงานเชิงสถิติ
-ข้อมูลการใช้งานในระยะยาว:
-ข้อมูลที่เกี่ยวข้องกับการวิเคราะห์แนวโน้ม (trend) ในระยะยาวที่ต้องการจัดเก็บเพื่อวิเคราะห์ย้อนหลัง เช่น การวิเคราะห์ Time Series
-สามารถนำข้อมูลเหล่านี้ไปใช้ในการวิเคราะห์เชิงพฤติกรรมในระยะเวลายาวนาน หรือใช้ในโมเดลการคาดการณ์อนาคต (Predictive Analytics)
+มีการตั้งค่า MongoDBSinkConnector จำนวน 3 อินสแตนซ์ โดยแต่ละอินสแตนซ์จะดึงข้อมูลจากหัวข้อ Kafka และจัดเก็บในคอลเลกชันที่ระบุไว้ใน MongoDB ดังนี้:
 
-2. ข้อมูลที่ส่งต่อให้ Prometheus
-Prometheus เป็นระบบมอนิเตอร์ที่เหมาะสำหรับการเก็บข้อมูลเชิงเวลาสำหรับการตรวจสอบระบบและการแสดงผลใน real-time ข้อมูลที่ส่งต่อให้ Prometheus ควรเน้นไปที่เมตริกที่สำคัญสำหรับการตรวจสอบสถานะและประสิทธิภาพของระบบอย่างทันทีทันใด:
+ย้ายข้อมูลจากหัวข้อ iot-frames ไปยังคอลเล็กชัน iot_frames ในฐานข้อมูล iot
+ย้ายข้อมูลจากหัวข้อ iot-aggregate-metrics-sensor ไปยังคอลเล็กชัน iot_aggregate_metrics_sensor
+ย้ายข้อมูลรวมตามสถานที่จากหัวข้อ iot-aggregate-metrics-place ไปยังคอลเล็กชัน iot_aggregate_metrics_place
+การกำหนดค่า
+1. MongoDB Sink Connector สำหรับ iot-frames
+ตัวเชื่อมต่อนี้จะย้ายข้อมูลจากหัวข้อ iot-frames ไปยังคอลเล็กชัน iot_frames ใน MongoDB โดยข้อมูลอยู่ในรูปแบบ JSON โดยไม่ต้องใช้ schema เช่น Avro หรือ JSON-Schema เพื่อให้กระบวนการง่ายขึ้น
 
-ข้อมูลสรุปเมตริกจากเซ็นเซอร์:
-ข้อมูลสรุป เช่น ค่าเฉลี่ย, ค่าสูงสุด-ต่ำสุด, หรือค่าสถานะปัจจุบันของเซ็นเซอร์ที่เกี่ยวข้องกับสุขภาพของระบบ เช่น อุณหภูมิ, ความชื้น, ความดัน ฯลฯ
-ข้อมูลเหล่านี้จะถูกส่งไปเป็นเวลาจริง (real-time) เพื่อตรวจสอบการทำงานของเซ็นเซอร์หรืออุปกรณ์ในระบบ
-ข้อมูลสถานะและการทำงานของระบบ:
-เช่น จำนวนการร้องขอ (requests), เวลาในการตอบสนอง (response time), และการใช้งานของ CPU หรือหน่วยความจำ
-ข้อมูลเหล่านี้จะช่วยในการตรวจสอบประสิทธิภาพของระบบใน real-time และสามารถทำ alert เพื่อแจ้งเตือนเมื่อเกิดความผิดปกติได้
-ข้อมูลเมตริกของการ Aggregation:
-ข้อมูล Aggregation ที่ใช้เพื่อตรวจสอบแนวโน้มของเซ็นเซอร์ในระยะสั้น หรือแนวโน้มที่อาจเกิดการผิดปกติในทันที เช่น การเปลี่ยนแปลงของอุณหภูมิที่สูงขึ้นเร็ว ๆ ในช่วงเวลาหนึ่ง
+json
+Copy code
+{
+   "name":"iot-frames-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-frames",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_frames",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable":false
+   }
+}
+2. MongoDB Sink Connector สำหรับ iot-aggregate-metrics-sensor
+ตัวเชื่อมต่อนี้จะย้ายข้อมูลเมตริกที่รวมตามเซ็นเซอร์จากหัวข้อ iot-aggregate-metrics-sensor ไปยังคอลเล็กชัน iot_aggregate_metrics_sensor ใน MongoDB
+
+json
+Copy code
+{
+   "name":"iot-aggregate-metrics-sensor-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-aggregate-metrics-sensor",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_aggregate_metrics_sensor",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable": false
+   }
+}
+3. MongoDB Sink Connector สำหรับ iot-aggregate-metrics-place
+ตัวเชื่อมต่อนี้จะย้ายข้อมูลเมตริกที่รวมตามสถานที่จากหัวข้อ iot-aggregate-metrics-place ไปยังคอลเล็กชัน iot_aggregate_metrics_place ใน MongoDB
+
+json
+Copy code
+{
+   "name":"iot-aggregate-metrics-place-mongodb-sink",
+   "config":{
+      "connector.class":"com.mongodb.kafka.connect.MongoSinkConnector",
+      "tasks.max":1,
+      "topics":"iot-aggregate-metrics-place",
+      "connection.uri":"mongodb://devroot:devroot@mongo:27017",
+      "database":"iot",
+      "collection":"iot_aggregate_metrics_place",
+      "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+      "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+      "value.converter.schemas.enable": false,
+      "key.converter.schemas.enable": false
+   }
+}
+Kafka ไปยัง Prometheus
+สำหรับการใช้งานร่วมกับ Prometheus ต้องกำหนดค่าตัวเชื่อมต่อเพื่อย้ายข้อมูลจากหัวข้อ iot-metric-time-series โดย Prometheus จะรับข้อมูลผ่านการดึงข้อมูล (scraping) ดังนั้นตัวเชื่อมต่อจะเปิดใช้งานเซิร์ฟเวอร์ HTTP เพื่อให้ Prometheus ค้นหาข้อมูล
+
+ตัวเชื่อมต่อ Kafka Connect Prometheus Metrics Sink ทำให้ข้อมูลนี้พร้อมสำหรับการขูดข้อมูลโดยเซิร์ฟเวอร์ Prometheus โดยตัวเชื่อมต่อรองรับข้อมูลในรูปแบบ JSON แบบไม่มีโครงร่างจาก Kafka
+
+json
+Copy code
+{
+  "name" : "prometheus-connector-sink",
+  "config" : {
+   "topics":"iot-metrics-time-series",
+   "connector.class" : "io.confluent.connect.prometheus.PrometheusMetricsSinkConnector",
+   "tasks.max" : "1",
+   "confluent.topic.bootstrap.servers":"kafka:9092",
+   "prometheus.scrape.url": "http://0.0.0.0:8084/iot-metrics-time-series",
+   "prometheus.listener.url": "http://0.0.0.0:8084/iot-metrics-time-series",
+   "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+   "key.converter": "org.apache.kafka.connect.json.JsonConverter",
+   "value.converter.schemas.enable": false,
+   "key.converter.schemas.enable":false,
+   "reporter.bootstrap.servers": "kafka:9092",
+   "reporter.result.topic.replication.factor": "1",
+   "reporter.error.topic.replication.factor": "1",
+   "behavior.on.error": "log"
+  }
+}
