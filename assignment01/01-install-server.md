@@ -44,6 +44,7 @@ Select: [ Done ]
 Choose to create a custom storage layout.
 
 Option: (X) Custom storage layout
+
 Select: [ Done ]
 
 9. Storage Configuration
@@ -52,28 +53,46 @@ Configure your partitions as follows:
 Mount Boot Partition:
 
 Use free space to create a new GPT partition.
+
 Size: 2G
+
 Format: [ ext4 ]
+
 Mount: [ /boot ]
+
 Select: [ Create ]
+
 Mount Swap Partition:
 
 Use free space to create a new GPT partition.
+
 Size: 2G
+
 Format: [ swap ]
+
 Select: [ Create ]
+
 Mount Root Partition:
 
 Use the remaining free space to create a new GPT partition.
+
 Size: MAX
+
 Format: [ ext4 ]
+
 Mount: [ / ]
+
 Select: [ Create ]
+
 File System Summary:
 MOUNT POINT	SIZE	TYPE	DEVICE TYPE
+
 /	MAX	ext4	partition of localdis
+
 /boot	2.0 G	ext4	partition of localdis
+
 /SWAP	2.0 G	swap	partition of localdis
+
 Select: [ Done ]
 Confirm the destructive action.
 Select: [ Continue ]
@@ -101,14 +120,17 @@ Option: (X) Install OpenSSH server
 Select: [ Done ]
 
 13. Featured server snaps
+    
 Skip the installation of featured snaps.
 
 Select: [ Continue ]
 
 14. Installation Complete!
+15. 
 Once the installation is finished, your server is ready to use.
 
 Select: [ Reboot Now ]
+
 (SET IP)
 
 1. install nano
