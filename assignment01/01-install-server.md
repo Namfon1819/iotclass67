@@ -180,7 +180,7 @@ sudo apt-get update
     "docker run hello-world"
 ```
 
-##Setup tools and Clone Project
+## Setup tools and Clone Project
 ```cpp
     # install wireless-tools, net-tools, git, vim
     sudo apt install wireless-tools net-tools git vim
@@ -191,7 +191,7 @@ sudo apt-get update
     # into project 
     cd iot_event_streaming_architecture
 ```
-##How to Uninstall Docker Engine
+## How to Uninstall Docker Engine
 ```cpp
         # Uninstall the Docker Engine, CLI, containerd, and Docker Compose packages:
     sudo apt-get purge docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin docker-ce-rootless-extras
