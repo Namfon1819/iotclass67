@@ -8,21 +8,47 @@
 
 
 ## Eclipse Mosquitto
-    Eclips Mosquitto เป็น MQTT broker ที่ทำหน้าที่เป็น "สถานีชุมทาง" 
-สำหรับการส่งและรับข้อมูลในระบบ IoT อุปกรณ์ต่างๆ จะสามารถสื่อสารกันผ่าน Mosquitto โดยใช้โปรโตคอล MQTT ซึ่งมีประสิทธิภาพสูงและกินทรัพยากรน้อย 
+•Eclipse Mosquitto เป็น MQTT broker แบบ open-source ที่ทำหน้าที่เป็นตัวกลางในการส่งข้อความระหว่างอุปกรณ์ต่าง ๆ ในระบบ Internet of Things (IoT) โดยใช้โปรโตคอล MQTT (Message Queuing Telemetry Transport) ซึ่งเป็นโปรโตคอลที่เบาและเหมาะกับการสื่อสารในเครือข่ายที่มีแบนด์วิธจำกัด เช่น IoT
+
+#หน้าที่ของ Eclipse Mosquitto
+1) Broker สำหรับการส่งข้อความ (Message Broker)
+2) รองรับการสื่อสารแบบเบาและรวดเร็ว
+3) จัดการหัวข้อ (Topic Management)
+4) รองรับ QoS (Quality of Service)
+5) ความปลอดภัย (Security)
+6) การเก็บสถานะล่าสุด (Retained Messages)
+7) การจัดการกับการเชื่อมต่อขาด (Will Messages)
+8) รองรับการทำงานในระบบขนาดเล็กและใหญ่
 
 ## Apache ZooKeeper
-    Eclips Mosquitto เป็น MQTT broker ที่ทำหน้าที่เป็น "สถานีชุมทาง" 
-สำหรับการส่งและรับข้อมูลในระบบ IoT อุปกรณ์ต่างๆ จะสามารถสื่อสารกันผ่าน Mosquitto โดยใช้โปรโตคอล MQTT ซึ่งมีประสิทธิภาพสูงและกินทรัพยากรน้อย 
+•Apache ZooKeeper เป็นระบบ distributed coordination service ที่ออกแบบมาเพื่อช่วยจัดการข้อมูลการกำหนดค่า (configuration) และการซิงโครไนซ์ (synchronization) ของระบบที่ทำงานแบบกระจาย (distributed systems) ให้เป็นไปอย่างมีประสิทธิภาพและสม่ำเสมอ
+
+#หน้าที่ของ Apache ZooKeeper
+1) การจัดเก็บและซิงโครไนซ์ข้อมูลแบบกระจาย
+2) Distributed Lock Management
+3) Leader Election (การเลือกหัวหน้าโหนด)
+4) Configuration Management
+5) Service Discovery (การค้นหาบริการ)
+6) การซิงโครไนซ์ข้อมูลระหว่างหลายโหนด
 
 ## Apache Kafka
-    Apache Kafka
-เป็นแพลตฟอร์มสตรีมมิ่งข้อมูลที่ช่วยให้การส่งข้อมูลแบบเรียลไทม์เป็นไปอย่างมีประสิทธิภาพ ข้อมูลจะถูกส่งไปยัง "topics" และสามารถดึงข้อมูลจาก topics เหล่านั้นได้ง่ายและรวดเร็ว 
+•Apache Kafka เป็นแพลตฟอร์มสำหรับ distributed streaming และ message queue ที่ออกแบบมาเพื่อจัดการ ข้อมูลแบบเรียลไทม์ ซึ่งรองรับการส่งข้อมูลจำนวนมหาศาลอย่างมีประสิทธิภาพและมีความน่าเชื่อถือสูง โดยใช้โมเดลการสื่อสารแบบ publish/subscribe
+
+#หน้าที่ของ Apache Kafka
+1) Message Broker (ตัวกลางในการส่งข้อมูล)
+2) Streaming Data Platform
+3) High Throughput (ประมวลผลข้อมูลจำนวนมากได้อย่างรวดเร็ว)
+4) Data Pipeline
+5) Fault-Tolerant (ความทนทานต่อความผิดพลาด)
 
 ## Apache Kafka Connect
-•Kafka Connect เป็นเครื่องมอื ที่ช่วยเชื่อมต่อ Kafka กับระบบอื่นๆ เช่น ฐานข้อมูล และระบบไฟล์. 
+•Apache Kafka Connect เป็น framework สำหรับการเชื่อมต่อ Kafka กับระบบภายนอก เช่น ฐานข้อมูล, ระบบจัดเก็บข้อมูล (data warehouses), APIs, และ ระบบสตรีมมิ่ง อื่น ๆ โดยไม่ต้องเขียนโค้ดใหม่เอง ทำให้การส่งข้อมูลเข้า (source) และดึงข้อมูลออก (sink) จาก Kafka ง่ายและมีประสิทธิภาพ
 
-•ทำให้ง่ายต่อการส่งข้อมูลเข้าและออกจาก Kafka 
+#หน้าที่ของ Apache Kafka Connect
+1) เชื่อมต่อกับแหล่งข้อมูลและปลายทาง
+2) ทำให้การจัดการข้อมูลเป็นอัตโนมัติ (Automation)
+3) แปลงและจัดรูปแบบข้อมูล
+4) Fault-tolerant และ Scalable
 
 ## Apache Kafka Streams
 •เป็นชุดเครื่องมือสำหรับการสร้างแอปพลิเคชันที่ทำงานกับข้อมูลที่เก็บไว้ใน Kafka 
