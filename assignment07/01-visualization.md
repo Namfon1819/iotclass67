@@ -43,7 +43,7 @@
 10) พอลงเสร็จก็ docker compose restart
 
 
-#การสร้าง map visualization
+# การสร้าง map visualization
 1) เข้าหน้า edit panal จากนั้นก็กดตรง edit diagram
    ![image](https://github.com/user-attachments/assets/4fd98489-76ac-42b3-811a-089a052d4b73)
    
