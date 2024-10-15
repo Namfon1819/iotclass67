@@ -3,41 +3,49 @@
 
 ## How to install Server
 
-Install Ubuntu 24.04 (LTS) on server
+#Install Ubuntu 24.04 (LTS) on server
 1. Select Your Language
 Choose your preferred language.
 
 Example: [ English ]
+
 2. Installer Update Available
 Skip the update for now.
 
 Select: [ Continue without updating ]
+
 3. Keyboard Configuration
 If the default keyboard layout is correct, proceed.
 
 Select: [ Done ]
+
 4. Choose the Type of Installation
 Choose the minimized Ubuntu Server installation.
 
 Option: (X) Ubuntu Server (minimized)
 Select: [ Done ]
+
 5. Network Configuration
 Accept the default network configuration.
 
 Select: [ Done ]
+
 6. Proxy Configuration
 If you don't use a proxy, leave this blank.
 
 Select: [ Done ]
+
 7. Ubuntu Archive Mirror Configuration
 Accept the default mirror settings.
 
 Select: [ Done ]
+
 8. Guided Storage Configuration
 Choose to create a custom storage layout.
 
 Option: (X) Custom storage layout
 Select: [ Done ]
+
 9. Storage Configuration
 Configure your partitions as follows:
 
@@ -69,6 +77,7 @@ MOUNT POINT	SIZE	TYPE	DEVICE TYPE
 Select: [ Done ]
 Confirm the destructive action.
 Select: [ Continue ]
+
 10. Profile Configuration
 Fill in the following fields to set up your server profile:
 
@@ -78,20 +87,24 @@ Pick a username: Choose a username for your account.
 Choose a password: Create a secure password.
 Confirm your password: Re-enter your password to confirm.
 Select: [ Done ]
+
 11. Upgrad to Ubunto Pro
 If prompted, select the option for upgrading to Ubuntu Pro.
 
 Option: (X) Custom storage layout
 Select: [ Continue ]
+
 12. SSH Configuration
 Install the OpenSSH server to enable remote access.
 
 Option: (X) Install OpenSSH server
 Select: [ Done ]
+
 13. Featured server snaps
 Skip the installation of featured snaps.
 
 Select: [ Continue ]
+
 14. Installation Complete!
 Once the installation is finished, your server is ready to use.
 
