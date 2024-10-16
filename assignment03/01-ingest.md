@@ -3,15 +3,104 @@
 อธิบาย 3 ส่วนนี้ สร้างมาได้อย่างไร
 
 # iot-sensor-1
-ถูกสร้างขึ้นบนระบบเซิร์ฟเวอร์ที่ใช้ Ubuntu โดยการเชื่อมต่อกับเซ็นเซอร์สำหรับวัดข้อมูลสิ่งแวดล้อม เช่น อุณหภูมิและความชื้น เซ็นเซอร์เหล่านี้เชื่อมต่อกับเซิร์ฟเวอร์ผ่านโปรโตคอล MQTT เพื่อส่งข้อมูลแบบเรียลไทม์ ข้อมูลที่ส่งเข้ามาจะถูกจัดเก็บในฐานข้อมูลเพื่อการติดตามสถานะและวิเคราะห์ข้อมูลเพื่อประสิทธิภาพการทำงานของระบบ เซิร์ฟเวอร์จะทำหน้าที่เป็นตัวกลางในการรับข้อมูลจากเซ็นเซอร์และจัดการกระบวนการเก็บรักษาข้อมูล.
-ที่มาของข้อมูล: เซ็นเซอร์นี้มาจากเซิร์ฟเวอร์ที่ทำงานบนระบบปฏิบัติการ Ubuntu
-การทำงาน: เซ็นเซอร์นี้จะเก็บข้อมูลจากแหล่งข้อมูลต่าง ๆ เช่น อุณหภูมิ, ความชื้น หรือข้อมูลอื่น ๆ ที่เกี่ยวข้อง ข้อมูลจะถูกส่งผ่าน MQTT ไปยังเซิร์ฟเวอร์ที่ทำหน้าที่รับข้อมูลและจัดเก็บในฐานข้อมูล
-ประโยชน์: ช่วยให้สามารถติดตามสถานะและประสิทธิภาพของระบบได้อย่างต่อเนื่อง
+IoT sensor 1 เป็น sensor ที่ถูกจําลองด้วยไมโครเซอร์วิสที่ใช้ใน Spring Boot (ผ่านไลบรารี Eclipse Paho MQTT) ที่ถูกติดตั้งอยู่บนเซิฟเวอร์ โดยจะส่งข้อมูล telemetry ไปยังโบรกเกอร์ Eclipse Mosquitto ข้อมูลที่ถูกจำลองนี้ generate ค่า ทุกอย่างภายใน payload มาจาก Callable โดยจะถูกสร้างขึ้นทุกวินาทีและ มี payload ในรูปแบบที่สร้างขึ้นให้ตรงกัน
 # iot-sensor-2
-ถูกสร้างขึ้นจากโค้ดที่รันบนเครื่องคอมพิวเตอร์ส่วนบุคคล โดยโค้ดนี้เชื่อมต่อกับ API หรืออุปกรณ์เซ็นเซอร์ภายนอกเพื่อดึงข้อมูล เช่น อุณหภูมิหรือความชื้น ข้อมูลที่ได้รับจะถูกส่งผ่าน MQTT ไปยังเซิร์ฟเวอร์ โค้ดสามารถปรับแต่งให้ทำงานกับเซ็นเซอร์ต่างๆ ได้ตามความต้องการของผู้ใช้ ทำให้เซ็นเซอร์นี้มีความยืดหยุ่นในการนำไปใช้งานและปรับเปลี่ยนตามสถานการณ์
-ที่มาของข้อมูล: เซ็นเซอร์นี้ถูกสร้างขึ้นจากโค้ดที่รันอยู่ในเครื่องคอมพิวเตอร์ส่วนบุคคล
-การทำงาน: เซ็นเซอร์นี้อาจใช้ API หรือการเชื่อมต่อกับอุปกรณ์อื่น ๆ เพื่อดึงข้อมูลและส่งผ่าน MQTT ข้อมูลที่ได้จะถูกส่งไปยังเซิร์ฟเวอร์เพื่อการวิเคราะห์และเก็บรักษา
-ประโยชน์: เป็นวิธีที่ง่ายและยืดหยุ่นในการสร้างเซ็นเซอร์ที่สามารถปรับแต่งได้ตามความต้องการของผู้ใช้
+เป็น sensor ที่ถูกจําลองด้วยไมโครเซอร์วิสที่ใช้ใน Spring Boot (ผ่านไลบรารี Eclipse Paho MQTT)เช่นเดียวกันกับ sensor 1 เพียงแต่ติดตั้งอยู่ในเครื่องของคนในทีม
+
+ทำ ot-sensor-1 และ iot-sensor-2 ได้ที่ pom.xml
+``ccp
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.3.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+    <groupId>com.dreamsoftware</groupId>
+    <artifactId>iotframesingest</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <name>iot_sensor</name>
+    <description>Simulate IoT Sensor</description>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <eclipse-paho-mqtt.version>1.2.0</eclipse-paho-mqtt.version>
+        <jackson-bind.version>2.9.8</jackson-bind.version>
+    </properties>
+
+    <dependencies>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.eclipse.paho</groupId>
+            <artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+            <version>${eclipse-paho-mqtt.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-bind.version}</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration>
+                    <finalName>iot_sensor</finalName>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.8.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                            <version>1.18.12</version>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                    <groupId>com.spotify</groupId>
+                    <artifactId>dockerfile-maven-plugin</artifactId>
+                    <version>1.4.6</version>
+                    <dependencies>
+                        <dependency>
+                            <groupId>com.github.jnr</groupId>
+                            <artifactId>jnr-unixsocket</artifactId>
+                            <version>0.38.14</version>
+                        </dependency>
+                    </dependencies>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
+``
 # iot-sensor-3-10
 ถูกสร้างขึ้นโดยใช้บอร์ดไมโครคอนโทรลเลอร์ Cucumber ESP32 S2 ที่เชื่อมต่อกับเซ็นเซอร์ BMP280 สำหรับวัดอุณหภูมิและความดัน, SHT4x สำหรับวัดความชื้น และเซ็นเซอร์วัดแสง ข้อมูลจากเซ็นเซอร์จะถูกอ่านผ่านการสื่อสารแบบ I2C และขาอะนาล็อก จากนั้นส่งผ่านโปรโตคอล MQTT ไปยังเซิร์ฟเวอร์ในรูปแบบ JSON เพื่อจัดเก็บและวิเคราะห์ นอกจากนี้ ใช้ NeoPixel เพื่อแสดงสถานะการทำงานของระบบ เช่น การเชื่อมต่อ WiFi, การเชื่อมต่อ MQTT, และการส่งข้อมูล พร้อมกับใช้ NTP เพื่อซิงโครไนซ์เวลาแบบเรียลไทม์ ข้อมูลทั้งหมดจะถูกประมวลผลและส่งต่อแบบเรียลไทม์.
 ที่มาของข้อมูล: เซ็นเซอร์เหล่านี้มาจาก Cucumber ESP32 S2 ซึ่งเป็นบอร์ดไมโครคอนโทรลเลอร์ที่ใช้ในโปรเจกต์ IoT
