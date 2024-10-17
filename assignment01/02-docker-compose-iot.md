@@ -35,7 +35,7 @@ services:
       ZOOKEEPER_AUTOPURGE_SNAP_RETAIN_COUNT: 10  # จำนวน snapshot ที่เก็บไว้
       ZOOKEEPER_AUTOPURGE_PURGE_INTERVAL: 3  # ระยะเวลาการลบ snapshot
 
-   Kafka เป็นแพลตฟอร์มการสตรีมข้อมูลแบบกระจาย
+   #Kafka เป็นแพลตฟอร์มการสตรีมข้อมูลแบบกระจาย
   kafka:
     image: confluentinc/cp-kafka  # ใช้ภาพ Docker ของ Kafka
     container_name: kafka          # ตั้งชื่อคอนเทนเนอร์
@@ -52,8 +52,8 @@ services:
     links:
       - zookeeper  # เชื่อมโยงกับบริการ ZooKeeper
 
-   Kafka REST Proxy ให้ API REST สำหรับ Kafka
-  # kafka-rest-proxy:
+   #Kafka REST Proxy ให้ API REST สำหรับ Kafka
+   kafka-rest-proxy:
     image: confluentinc/cp-kafka-rest:latest  # ใช้ภาพ Docker ของ Kafka REST Proxy
     container_name: kafka-rest-proxy           # ตั้งชื่อคอนเทนเนอร์
     environment:
@@ -64,8 +64,8 @@ services:
     ports:
       - "9999:8082"                                   # เปิดพอร์ต 9999 สำหรับการเข้าถึง
 
-   Kafka Connect เป็นเฟรมเวิร์คสำหรับเชื่อมต่อ Kafka กับระบบภายนอก
-  # kafka-connect:
+  # Kafka Connect เป็นเฟรมเวิร์คสำหรับเชื่อมต่อ Kafka กับระบบภายนอก
+  kafka-connect:
     image: confluentinc/cp-kafka-connect:latest  # ใช้ภาพ Docker ของ Kafka Connect
     container_name: kafka-connect                  # ตั้งชื่อคอนเทนเนอร์
     environment:
@@ -102,8 +102,8 @@ services:
       - zookeeper  # ขึ้นอยู่กับ ZooKeeper
       - kafka      # ขึ้นอยู่กับ Kafka
 
-   MongoDB สำหรับเก็บข้อมูล
-  # mongo:
+  # mongo เป็นฐานข้อมูล NoSQL ที่ได้รับความนิยมซึ่งออกแบบมาให้จัดเก็บข้อมูลในรูปแบบที่ยืดหยุ่น MongoDB เหมาะสำหรับการจัดการข้อมูลปริมาณมาก
+   mongo:
     image: mongo:4.4.20                           # ใช้ภาพ Docker ของ MongoDB
     container_name: mongo                          # ตั้งชื่อคอนเทนเนอร์
     env_file:
@@ -114,8 +114,8 @@ services:
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_ROOT_PASSWORD}  # รหัสผ่านราก
       - MONGO_INITDB_DATABASE=${MONGO_DB}          # ชื่อฐานข้อมูลเริ่มต้น
 
-   Grafana สำหรับการวิเคราะห์และแสดงผลข้อมูล
-  # grafana:
+  # grafana เป็นเครื่องมือสร้างแดชบอร์ดที่สามารถแสดงข้อมูลจากเมตริกต่าง ๆ ในรูปแบบกราฟแบบเรียลไทม์
+   grafana:
     image: grafana/grafana:latest-ubuntu         # ใช้ภาพ Docker ของ Grafana
     container_name: grafana                       # ตั้งชื่อคอนเทนเนอร์
     user: '0'                                    # รันด้วยสิทธิ์ผู้ใช้ 0
@@ -132,8 +132,8 @@ services:
     ports:
       - '8085:3000'                                   # เปิดพอร์ต 8085 สำหรับการเข้าถึง Grafana
 
-   Prometheus สำหรับการตรวจสอบและแจ้งเตือน
-  # prometheus:
+  # Prometheus สำหรับการตรวจสอบและแจ้งเตือน
+   prometheus:
     image: prom/prometheus:latest                   # ใช้ภาพ Docker ของ Prometheus
     container_name: prometheus                      # ตั้งชื่อคอนเทนเนอร์
     volumes:
@@ -150,7 +150,7 @@ services:
     ports:
       - '8086:9090'                                 # เปิดพอร์ต 8086 สำหรับการเข้าถึง Prometheus
         # Exporter for machine metrics    
-  # nodeexporter:
+   nodeexporter:
     image: prom/node-exporter:v0.18.1  # ใช้ภาพ Docker ของ Node Exporter
     container_name: nodeexporter        # ตั้งชื่อคอนเทนเนอร์
     hostname: nodeexporter              # ตั้งชื่อโฮสต์
@@ -167,7 +167,7 @@ services:
       - '9100:9100'                     # เปิดพอร์ต 9100 สำหรับการเข้าถึง Node Exporter
 
    Kafka exporter for Prometheus
-  # kafka-exporter:
+   kafka-exporter:
     image: bitnami/kafka-exporter:latest  # ใช้ภาพ Docker ของ Kafka Exporter
     container_name: kafka-exporter         # ตั้งชื่อคอนเทนเนอร์
     hostname: kafka-exporter               # ตั้งชื่อโฮสต์
@@ -178,7 +178,7 @@ services:
       - '--log.level=debug'                # ระดับ log
     restart: unless-stopped                # ให้รีสตาร์ทอัตโนมัติเมื่อคอนเทนเนอร์หยุดทำงาน
 
-   IoT Sensor 1
+ # IoT sensor 1 เป็น sensor ที่ถูกจําลองด้วยไมโครเซอร์วิสที่ใช้ใน Spring Boot (ผ่านไลบรารี Eclipse Paho MQTT) ที่ถูกติดตั้งอยู่บนเซิฟเวอร์ โดยจะส่งข้อมูล telemetry ไปยังโบรกเกอร์ Eclipse Mosquitto ข้อมูลที่ถูกจำลองนี้ generate ค่า ทุกอย่างภายใน payload มาจาก Callable โดยจะถูกสร้างขึ้นทุกวินาทีและ มี payload ในรูปแบบที่สร้างขึ้นให้ตรงกัน
   iot_sensor_1:
     # image: ssanchez11/iot_sensor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Sensor 1
     build:
@@ -215,7 +215,7 @@ services:
       - sensor.name=${IOT_SENSOR_3_NAME}         # ชื่อเซ็นเซอร์
       - sensor.place.id=${IOT_SENSOR_3_PLACE_ID} # รหัสสถานที่
 
-   IoT Processor
+# iot-processor เป็นการประมวลผลข้อมูลที่ได้จากเซ็นเซอร์ ข้อมูลที่เก็บมาอาจจะถูกส่งไปยังระบบประมวลผลหรือเซิร์ฟเวอร์กลาง การประมวลผลอาจรวมถึง
   iot-processor:
     image: ssanchez11/iot_processor:0.0.1-SNAPSHOT  # ใช้ภาพ Docker ของ IoT Processor
     container_name: iot-processor                     # ตั้งชื่อคอนเทนเนอร์
